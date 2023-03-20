@@ -1,0 +1,9 @@
+#File extensions to ignore
+*.gz
+*.swp
+
+#Folders to ignore
+__pycache__/
+
+#Mac clean-up
+*.ds_store
