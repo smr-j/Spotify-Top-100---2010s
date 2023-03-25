@@ -69,5 +69,5 @@ df['top genre'] = df['top genre'].apply(lambda x: 'singer-songwriter' if 'songwr
 df['top genre'] = df['top genre'].apply(lambda x: 'contemporary country' if 'black americana' in x else x)
 
 #print(len(df['top genre'].unique()))
-
+df.to_csv("data/top_100_cleaned.csv")
 
