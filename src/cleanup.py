@@ -17,6 +17,28 @@ for x in range(len(df['genres'])):
 df['top genre'] = col_val
 del df['genres']
 
+# variable to hold the count
+cnt = 0
+  
+# list to hold visited values
+visited = []
+  
+# loop for counting the unique
+# values in height
+for i in range(0, len(df['top genre'])):
+    
+    if df['top genre'][i] not in visited: 
+        
+        visited.append(df['top genre'][i])
+          
+        cnt += 1
+  
+print("No.of.unique values :",
+      cnt)
+  
+print("unique values :",
+      visited)
+
 #limit the number of genres
 df['top genre'] = df['top genre'].apply(lambda x: 'hip hop' if 'hip hop' in x else x)
 df['top genre'] = df['top genre'].apply(lambda x: 'hip hop' if 'rap' in x else x)
@@ -69,5 +91,9 @@ df['top genre'] = df['top genre'].apply(lambda x: 'singer-songwriter' if 'songwr
 df['top genre'] = df['top genre'].apply(lambda x: 'contemporary country' if 'black americana' in x else x)
 
 #print(len(df['top genre'].unique()))
+del df['entry']
+df["top k"] = 1
+df.loc[df["ranking"] > 25, "top k"] = 0
+df = df[['top year', 'top k', 'ranking', 'artist', 'track', 'release year', 'danceability', 'energy', 'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo', 'key', 'mode', 'duration_ms', 'popularity', 'top genre']]
 df.to_csv("data/top_100_cleaned.csv")
 
